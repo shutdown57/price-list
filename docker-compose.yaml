@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: yarn start
+    ports:
+      - "6001:3000"
+    environment:
+      APP_HOST: ${APP_HOST}
+      APP_PORT: ${APP_PORT}
+      DATABASE_NAME: ${DATABASE_NAME}
+      DATABASE_USER: ${DATABASE_USER}
+      DATABASE_HOST: ${DATABASE_HOST}
+      DATABASE_PORT: ${DATABASE_PORT}
+      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
+    volumes:
+      - ./:/app
+
+  redis:
+    image: bitnami/redis:latest
+    ports:
+      - "6379:6379"
+    environment:
+      ALLOW_EMPTY_PASSWORD: ${REDIS_EMPTY_PASSWORD}
+      REDIS_DISABLE_COMMANDS: ${REDIS_DISABLE_COMMANDS}
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+      REDIS_AOF_ENABLED: ${REDIS_AOF_ENABLED}
+      REDIS_PORT_NUMBER: ${REDIS_PORT_NUMBER}
+    volumes:
+      - ./data/redis:/bitnami/redis/data
+
