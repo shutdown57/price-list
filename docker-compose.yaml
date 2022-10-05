@@ -17,16 +17,15 @@ services:
     volumes:
       - ./:/app
 
-  redis:
-    image: bitnami/redis:latest
-    ports:
-      - "6379:6379"
-    environment:
-      ALLOW_EMPTY_PASSWORD: ${REDIS_EMPTY_PASSWORD}
-      REDIS_DISABLE_COMMANDS: ${REDIS_DISABLE_COMMANDS}
-      REDIS_PASSWORD: ${REDIS_PASSWORD}
-      REDIS_AOF_ENABLED: ${REDIS_AOF_ENABLED}
-      REDIS_PORT_NUMBER: ${REDIS_PORT_NUMBER}
-    volumes:
-      - ./data/redis:/bitnami/redis/data
-
+  # redis:
+  #   image: bitnami/redis:latest
+  #   ports:
+  #     - "6379:6379"
+  #   environment:
+  #     ALLOW_EMPTY_PASSWORD: ${REDIS_EMPTY_PASSWORD}
+  #     REDIS_DISABLE_COMMANDS: ${REDIS_DISABLE_COMMANDS}
+  #     REDIS_PASSWORD: ${REDIS_PASSWORD}
+  #     REDIS_AOF_ENABLED: ${REDIS_AOF_ENABLED}
+  #     REDIS_PORT_NUMBER: ${REDIS_PORT_NUMBER}
+  #   volumes:
+  #     - ./data/redis:/bitnami/redis/data
