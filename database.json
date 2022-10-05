@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "admin",
+    "password": "1234",
+    "database": "crm",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "admin",
+    "password": "1234",
+    "database": "crm_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "admin",
+    "password": "1234",
+    "database": "crm",
+    "host": "db",
+    "dialect": "mysql"
+  }
+}
