@@ -1,4 +1,5 @@
 import { Vendor } from '../models/vendor.model'
+import { Paginate } from '../interfaces/RequestCommon'
 
 
 export default class {
@@ -27,10 +28,15 @@ export default class {
     await Vendor.destroy({ where: { id } })
   }
 
-  async paginated(limit: number = 20, offset: number = 0): Promise<Vendor[]> {
+  async paginated(limit: number = 20, offset: number = 0): Promise<{ vendors: Vendor[], paginate: Paginate }> {
     const vendors = await Vendor.findAll(
       { order: [['id', 'DESC']], limit, offset }
     )
-    return vendors
+    const paginate = {
+      total: await Vendor.count(),
+      limit,
+      offset
+    }
+    return { vendors, paginate }
   }
 }
