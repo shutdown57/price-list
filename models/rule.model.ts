@@ -29,7 +29,4 @@ export class Rule extends Model<RuleAttributes, RuleCreationAttributes> {
 
   @Column(DataType.STRING)
   v2?: string
-
-  @BelongsTo(() => User, 'v0')
-  user?: User
 }
