@@ -6,12 +6,14 @@ import {
   DataType,
   DeletedAt,
   UpdatedAt,
-  CreatedAt
+  CreatedAt,
+  HasMany
 } from 'sequelize-typescript'
+import { PriceList } from './priceList.model'
 
 
 interface VendorAttributes {
-  id: string
+  id: number
   name: string
   countries: Array<string>
   created_at?: string
@@ -23,7 +25,8 @@ interface VendorCreationAttributes extends Optional<VendorAttributes, 'id'> { }
 
 @Table({
   timestamps: true,
-  tableName: 'vendors'
+  tableName: 'vendors',
+  paranoid: true
 })
 export class Vendor extends Model<VendorAttributes, VendorCreationAttributes> {
   @Column(DataType.STRING)
@@ -31,6 +34,9 @@ export class Vendor extends Model<VendorAttributes, VendorCreationAttributes> {
 
   @Column(DataType.JSON)
   countries?: Array<string>
+
+  @HasMany(() => PriceList)
+  pricelists?: PriceList[]
 
   @CreatedAt
   created_at?: string
